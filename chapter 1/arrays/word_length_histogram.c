@@ -4,7 +4,7 @@
 
 main()
 {
-    int c, width, wl, i, j, flag;
+    int c, width, wl, i, j, flag, max;
     int nwords[10];
     wl = 0;
     for(i=0; i<10; ++i)
@@ -21,32 +21,38 @@ main()
     }
 
     /* 1st Version with horizontal orientation */
+    max = 0;
     for(i=1; i<10; ++i)
     {
         printf("%3d|", i);
         for(j=1; j<=nwords[i]; ++j)
             printf("=");
         printf("|\n");
+        if(nwords[i]>max)
+            max = nwords[i];
     }
 
     /* 2nd Version with vertical orientation */
-    flag = 1;
-    for(i=1; i<10; ++i)
-        printf("%2d", i);
-    while(flag)
+    for(j=max+1; j>=1; --j)
     {
         printf("\n");
-        flag = 0;
         for(i=1; i<10; ++i)
         {
-            if(nwords[i]>0)
+            if(nwords[i]>=j)
             {
-                printf(" =");
+                printf("| |\t");
                 --nwords[i];
-                ++flag;
             }
+            else if(j==(nwords[i]+1))
+                printf("___\t");
             else
-                printf("  ");
+                printf("\t");
         }
     }
+    printf("\n");
+    /*for(i=1; i<10; ++i)
+        printf("---\t");*/
+    printf("\n");
+    for(i=1; i<10; ++i)
+        printf(" %d\t", i);
 }
