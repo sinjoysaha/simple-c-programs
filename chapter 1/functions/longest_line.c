@@ -20,7 +20,7 @@ main()
         }
     }
     if (max>0)
-        printf("%s\n", longest);
+        printf("Longest Line: %s\n", longest);
     return 0;
 }
 
@@ -35,8 +35,12 @@ int getline(char s[], int lim)
         s[i] = c;
         ++i;
     }
+    else if (c != EOF)
+    {
+        printf("Maximum character limit exceeded.\n");
+    }
     s[i] = '\0';
-    /* printf("%d\n", i);*/
+    printf("Length = %d\n", i);
     return i;
 }
 
