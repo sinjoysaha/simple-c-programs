@@ -1,7 +1,6 @@
 #include <stdio.h>
 #define MAXTOTAL 10000
 #define MAXLINE  500
-#define LIMIT    80
 
 int getline(char[], int);
 int store(char[], char[], int);
@@ -11,15 +10,12 @@ main()
     int len, pos = 0;
     char total[MAXTOTAL], line[MAXLINE];
 
-    while((len = getline(line, MAXLINE)) > 0)
+    while((len = getline(line, MAXLINE))>0)
     {
-        if (len > LIMIT)
-            pos = store(total, line, pos);
+        pos = store(total, line, pos);
     }
-    if (pos > 0)
-        printf("Lines longer than 80 characters:\n%s\n", total);
-    else
-        printf("No lines longer than 80 characters!\n");
+    if (pos>0)
+        printf("%s\n", total);
 }
 
 /* getline: read a line into s, return length */
@@ -44,11 +40,22 @@ int getline(char s[], int lim)
 
 int store(char to[], char from[], int pos)
 {
-    int i=0;
-    while((to[pos]=from[i])!='\0')
+    int i=0, flag = 0;
+    char c;
+    while((c=from[i])!='\0')
     {
-        ++pos;
-        ++i;
+        if(flag == 0 && (c==' ' || c=='\t' || c=='\n'))
+        {
+            ++i;
+            continue;
+        }
+        else
+        {
+            to[pos] = c;
+            ++pos;
+            ++i;
+            flag = 1;
+        }
     }
     return pos;
 }
