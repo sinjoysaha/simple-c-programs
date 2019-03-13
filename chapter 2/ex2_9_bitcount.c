@@ -29,11 +29,8 @@ int bitcount(unsigned x)
     int b;
     clock_t t;
     t = clock();
-    for (b=0; x!=0 ; x>>=1)
-    {
-        if (x&01)
-            b++;
-    }
+    for (b=0; x!=0 ; x&=(x-1))
+        b++;
     t = clock() - t;
     printf("Clocks taken: %ld\n", t);
     return b;
