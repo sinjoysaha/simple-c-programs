@@ -10,26 +10,24 @@
   (byte & 0x02 ? '1' : '0'), \
   (byte & 0x01 ? '1' : '0')
 
-unsigned setbits(unsigned, int, int, unsigned);
+unsigned rightrot(unsigned, int);
 
 main()
 {
-    unsigned x, y;
-    int p, n;
-    printf("Enter x, p, n, y:\n");
-    scanf("%u %d %d %u", &x ,&p, &n, &y);
+    unsigned x;
+    int n;
+    printf("Enter x, n:\n");
+    scanf("%u %d", &x, &n);
     printf("x: "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
     BYTE_TO_BINARY(x>>24),BYTE_TO_BINARY(x>>16),BYTE_TO_BINARY(x>>8), BYTE_TO_BINARY(x));
-    printf("y: "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
-    BYTE_TO_BINARY(y>>24),BYTE_TO_BINARY(y>>16),BYTE_TO_BINARY(y>>8), BYTE_TO_BINARY(y));
 
-    x = setbits(x,p,n,y);
+    x = rightrot(x, n);
     printf("\nx: %u", x);
     printf("\n =>"BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
     BYTE_TO_BINARY(x>>24),BYTE_TO_BINARY(x>>16),BYTE_TO_BINARY(x>>8), BYTE_TO_BINARY(x));
 }
 
-unsigned setbits(unsigned x, int p, int n, unsigned y)
+unsigned rightrot(unsigned x, int n)
 {
-    return (x | (y & ~(~0<<n))<<(p+1-n));
+    return ((x>>n) | (x << (32-n))) ;
 }

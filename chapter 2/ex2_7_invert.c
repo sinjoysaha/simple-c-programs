@@ -18,13 +18,13 @@ main()
     int p, n;
     printf("Enter x, p, n:\n");
     scanf("%u %d %d", &x ,&p, &n);
-    printf("x: "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
-  BYTE_TO_BINARY(x>>8), BYTE_TO_BINARY(x));
+    printf("x: "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
+    BYTE_TO_BINARY(x>>24),BYTE_TO_BINARY(x>>16),BYTE_TO_BINARY(x>>8), BYTE_TO_BINARY(x));
 
     x = invert(x,p,n);
     printf("\nx: %u", x);
-    printf("\n =>"BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
-  BYTE_TO_BINARY(x>>8), BYTE_TO_BINARY(x));
+    printf("\n =>"BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
+    BYTE_TO_BINARY(x>>24),BYTE_TO_BINARY(x>>16),BYTE_TO_BINARY(x>>8), BYTE_TO_BINARY(x));
 }
 
 unsigned invert(unsigned x, int p, int n)
