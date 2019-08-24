@@ -28,4 +28,4 @@ These articles might help you with your very first pull request.
 
 ## Get in touch
 Follow me on [Twitter](https://twitter.com/SinjoySaha), [GitHub](https://github.com/sinjoysaha) and [LinkedIn](https://www.linkedin.com/in/sinjoysaha/).
-Also, it would be immensely helpful if star this repo.
+Also, it would be of immense help if you star this repo.
